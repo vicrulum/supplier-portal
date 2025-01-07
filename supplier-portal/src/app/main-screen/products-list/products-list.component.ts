@@ -21,5 +21,6 @@ export class ProductsListComponent {
     {id: 5, name: "Moztaza", description: "32 envases", price: 923},
     {id: 6, name: "Alita de pollo", description: "15 kg", price: 452},
     {id: 7, name: "Deshebrada", description: "10 kg", price: 683},
+    {id: 8, name: "Servilletas", description: "500 pz", price: 70},
   ]
 }

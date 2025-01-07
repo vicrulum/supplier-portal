@@ -3,10 +3,11 @@
         <img src="products.png" alt="products">
     </div>
     <div>
-        <div class="font-bold text-lg">{{productName}}</div>
-        <div class="text-sm text-gray-600">{{productDesc}}</div>
+        <div class="font-bold text-lg">{{product.name}}</div>
+        <div class="text-sm text-gray-600">{{product.description}}</div>
+        <div class="font-bold text-lg">MXN {{product.price | currency}}</div>
     </div>
     <div class="text-center">
-        <button>Agregar</button>
+        <button (click)="addProduct(product)">Agregar</button>
     </div>
 </div>
