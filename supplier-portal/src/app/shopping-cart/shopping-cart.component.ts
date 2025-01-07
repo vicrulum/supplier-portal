@@ -15,7 +15,7 @@ export class ShoppingCartComponent {
   constructor(private productService: ProductService){}
 
   ngOnInit(){
-    this.productService.currentProducts$.subscribe((products) => {
+    this.productService.productsInCart$.subscribe((products) => {
       this.products = products
       this.totalPrice = products.reduce((sum, current) => sum + current.price, 0)
       })
