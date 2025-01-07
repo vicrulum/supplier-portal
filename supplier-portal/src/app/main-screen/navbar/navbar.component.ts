@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
@@ -21,10 +22,11 @@ export class NavbarComponent {
     { id: 9, name: 'Aderezos' },
   ];
 
+  searchKeyword: string = ''
+
   constructor(private productService: ProductService) {}
 
-  filterProducts(keyword: any): void {
-    console.log(keyword)
-    this.productService.filterProducts(keyword);
+  filterProducts(): void {
+    this.productService.filterProducts(this.searchKeyword);
   }
 }
