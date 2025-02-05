@@ -1,16 +1,21 @@
-<div class="grid grid-cols-4 gap-1 m-1 items-center border-b-4 border-gray-300 rounded-lg bg-yellow-800 bg-opacity-15">
-  <img
-    class="rounded-lg"
-    src="products.png"
-    alt="products"
-  />
+<div
+  class="grid grid-cols-4 gap-1 m-1 items-center border-b-4 border-gray-300 rounded-lg bg-yellow-800 bg-opacity-15"
+>
+  <img class="rounded-lg" src="products.png" alt="products" />
 
   <div class="col-span-2">
     <div class="font-bold text-lg">{{ product.name }}</div>
     <div class="text-sm text-gray-600">{{ product.description }}</div>
     <div class="font-bold text-md">MXN {{ product.price | currency }}</div>
   </div>
-  <div class="text-center">
-    <button (click)="addProduct(product)">Agregar</button>
+
+  <div class="flex justify-around items-center">
+    <button [disabled]="product.quantity === 0" mat-icon-button (click)="decrease(product)">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <p>{{ product.quantity }}</p>
+    <button [disabled]="product.quantity > 99" mat-icon-button (click)="increase(product)">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>
