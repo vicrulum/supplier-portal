@@ -4,10 +4,11 @@ import { CurrencyPipe } from '@angular/common';
 import { ProductService } from '../../../services/product.service';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button'
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-list-item',
-  imports: [CurrencyPipe, MatIconModule, MatButtonModule],
+  imports: [CurrencyPipe, MatIconModule, MatButtonModule, MatCardModule],
   templateUrl: './list-item.component.html',
   styleUrl: './list-item.component.scss'
 })

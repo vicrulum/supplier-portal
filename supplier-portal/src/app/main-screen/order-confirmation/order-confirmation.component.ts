@@ -35,4 +35,22 @@ export class OrderConfirmationComponent {
       );
     });
   }
+
+  confirmOrder(): void {
+    const msg = this.objectArrayToUrlEncodedValues(this.products);
+    window.open(`https://wa.me/528121078280?text=${msg}`, '_blank'); 
+  }
+
+  objectArrayToUrlEncodedValues(objArray: { [key: string]: any }[]): string {
+    return objArray
+      .map((obj) => {
+        const selectedValues = [obj['name'], `Cant:${obj['quantity']}`, `$${(obj['price'] * obj['quantity'])}`];
+        return selectedValues
+          .filter(value => value !== undefined)
+          .map((value) => encodeURIComponent(value))
+          .join('%09');
+      })
+      .join('%0A') + `%0ATotal%20:%20$${this.totalPrice}`; // Join objects with '%0A' (newline encoded)
+  }
+  
 }
