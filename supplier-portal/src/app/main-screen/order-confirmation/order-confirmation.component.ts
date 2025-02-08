@@ -44,7 +44,7 @@ export class OrderConfirmationComponent {
   objectArrayToUrlEncodedValues(objArray: { [key: string]: any }[]): string {
     return objArray
       .map((obj) => {
-        const selectedValues = [obj['name'], `Cant:${obj['quantity']}`, `$${(obj['price'] * obj['quantity'])}`];
+        const selectedValues = [obj['name'], `Cant: ${obj['quantity']}`, `$${(obj['price'] * obj['quantity'])}`];
         return selectedValues
           .filter(value => value !== undefined)
           .map((value) => encodeURIComponent(value))
