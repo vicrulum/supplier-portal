@@ -18,7 +18,7 @@ export class ProductsListComponent {
   
   
   ngOnInit() {
-    this.productService.products$.subscribe((products) => {
+    this.productService.filteredProducts$.subscribe((products) => {
       this.products = products;
     });
   }

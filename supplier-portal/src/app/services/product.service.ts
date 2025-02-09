@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Product } from '../models/product.model';
+import { API_KEY, GoogleSheetsDbService } from 'ng-google-sheets-db';
+import { sourceAttributesMapping } from '../models/sourceAttributesMapping.model';
+
 
 @Injectable({
   providedIn: 'root',
@@ -75,6 +78,9 @@ export class ProductService {
   private productsSubject = new BehaviorSubject<Product[]>(this.originalProducts);
   products$ = this.productsSubject.asObservable();
 
+  private filteredProductsSubject = new BehaviorSubject<Product[]>(this.originalProducts);
+  filteredProducts$ = this.filteredProductsSubject.asObservable();
+
   private productsInCartSubject = new BehaviorSubject<Product[]>([]);
   productsInCart$ = this.productsInCartSubject.asObservable();
 
@@ -84,15 +90,17 @@ export class ProductService {
   private totalPriceSubject = new BehaviorSubject<number>(0);
   public totalPrice$ = this.totalPriceSubject.asObservable();
 
-  constructor() {}
+  constructor(private googleSheetsDbService: GoogleSheetsDbService) {
+    this.getProducts();
+  }
 
   filterProducts(keyword: string): void {
-    const filteredProducts = this.originalProducts.filter(
+    const filteredProducts = this.productsSubject.value.filter(
       (product) =>
         product.name.toLowerCase().includes(keyword.toLowerCase()) ||
         product.description.toLowerCase().includes(keyword.toLowerCase())
     );
-    this.productsSubject.next(filteredProducts);
+    this.filteredProductsSubject.next(filteredProducts);
   }
 
   public addProduct(product: Product) {
@@ -118,5 +126,16 @@ export class ProductService {
       const updatedItems = currentItems.filter(p => p.id !== product.id);
       this.productsInCartSubject.next(updatedItems);
     }
+  }
+
+  public getProducts(): void {
+    let source$: Observable<any[]>;
+    source$ = this.googleSheetsDbService.get<any>('1rsDrkQliZNHDuVnRGRqfF-D0h6mkiWbAJ3tFcN6AwlI', 'source', sourceAttributesMapping);
+
+    source$.pipe(map((data: any[]) => {
+      this.productsSubject.next(data.map(product => ({...product, quantity: 0})))
+      this.filteredProductsSubject.next(data.map(product => ({...product, quantity: 0})))
+      console.log(data);
+    })).subscribe();
   }
 }
