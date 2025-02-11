@@ -4,5 +4,6 @@ export const sourceAttributesMapping = {
     category: "Categoria",
     description: "Descripcion",
     price: "Precio",
-    stock: "Existencia"
+    stock: "Existencia",
+    imageUrl: "ImagenURL"
 }

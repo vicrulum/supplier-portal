@@ -16,7 +16,8 @@ export class ProductService {
       name: 'Elote',
       description: 'Caja de elotes con 90 pz',
       price: 560,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 2,
@@ -24,7 +25,8 @@ export class ProductService {
       name: 'Boneless',
       description: 'Caja con boneless con 120 pz',
       price: 1300,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 3,
@@ -32,7 +34,8 @@ export class ProductService {
       name: 'Mayonesa',
       description: '30 envases',
       price: 872,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 4,
@@ -40,7 +43,8 @@ export class ProductService {
       name: 'Catsup Heinz',
       description: '25 envases',
       price: 798,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 5,
@@ -48,7 +52,8 @@ export class ProductService {
       name: 'Moztaza',
       description: '32 envases',
       price: 923,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 6,
@@ -56,7 +61,8 @@ export class ProductService {
       name: 'Alita de pollo',
       description: '15 kg',
       price: 452,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 7,
@@ -64,7 +70,8 @@ export class ProductService {
       name: 'Deshebrada',
       description: '10 kg',
       price: 683,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
     {
       id: 8,
@@ -72,7 +79,8 @@ export class ProductService {
       name: 'Servilletas',
       description: '500 pz',
       price: 70,
-      quantity: 0
+      quantity: 0,
+      imageUrl: ''
     },
   ];
   private productsSubject = new BehaviorSubject<Product[]>(this.originalProducts);

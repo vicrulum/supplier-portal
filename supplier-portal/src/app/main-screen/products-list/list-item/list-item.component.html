@@ -6,7 +6,7 @@
   </mat-card-header>
   <mat-card-content>
     <div class="flex items-center justify-start">
-      <img mat-card-md-image src="products.png" alt="products" />
+      <img mat-card-md-image [src]="product.imageUrl !== '' ? product.imageUrl : 'products.png'" alt="products" />
       <p class="ml-2">
         {{ product.description }}
       </p>
