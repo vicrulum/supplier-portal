@@ -1,8 +1,11 @@
 <div>
-    <input [(ngModel)]="searchKeyword" class="border-b-2 border-gray-500 w-full text-lg p-2" type="text" placeholder="Buscar producto o descripción..." (keyup)="filterProducts()">
-    <!-- <div class="h-16 w-full flex flex-row overflow-auto items-center">
-        <div *ngFor="let item of listItems" class="m-2">
-            <button class="bg-slate-100 border border-gray-500 rounded-md w-max p-1">{{item.name}}</button>
-        </div>
-    </div> -->
+    <mat-form-field class="w-full">
+        <mat-label>Buscar productos</mat-label>
+        <input matInput [(ngModel)]="searchKeyword"  type="text" (keyup)="filterProducts()">
+    </mat-form-field>
+    <!-- <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="First">Content 1</mat-tab>
+        <mat-tab label="Second">Content 2</mat-tab>
+        <mat-tab label="Third">Content 3</mat-tab>
+    </mat-tab-group> -->
 </div>
