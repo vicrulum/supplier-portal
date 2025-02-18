@@ -11,18 +11,11 @@ import {MatTabsModule} from '@angular/material/tabs';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
-export class NavbarComponent implements OnInit{
-  categories: any[] = [];
-
+export class NavbarComponent{
   searchKeyword: string = ''
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {
-    // this.productService.products$.subscribe((products) => {
-    //   this.categories = new Set(products.map((product) => product.categoryId))
-    // })
-  }
 
   filterProducts(): void {
     this.productService.filterProducts(this.searchKeyword);

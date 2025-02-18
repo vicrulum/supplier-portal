@@ -12,7 +12,7 @@ export class ProductService {
   private originalProducts: Product[] = [
     {
       id: 1,
-      categoryId: 1,
+      category: '',
       name: 'Elote',
       description: 'Caja de elotes con 90 pz',
       price: 560,
@@ -21,7 +21,7 @@ export class ProductService {
     },
     {
       id: 2,
-      categoryId: 1,
+      category: '',
       name: 'Boneless',
       description: 'Caja con boneless con 120 pz',
       price: 1300,
@@ -30,7 +30,7 @@ export class ProductService {
     },
     {
       id: 3,
-      categoryId: 1,
+      category: '',
       name: 'Mayonesa',
       description: '30 envases',
       price: 872,
@@ -39,7 +39,7 @@ export class ProductService {
     },
     {
       id: 4,
-      categoryId: 1,
+      category: '',
       name: 'Catsup Heinz',
       description: '25 envases',
       price: 798,
@@ -48,7 +48,7 @@ export class ProductService {
     },
     {
       id: 5,
-      categoryId: 1,
+      category: '',
       name: 'Moztaza',
       description: '32 envases',
       price: 923,
@@ -57,7 +57,7 @@ export class ProductService {
     },
     {
       id: 6,
-      categoryId: 1,
+      category: '',
       name: 'Alita de pollo',
       description: '15 kg',
       price: 452,
@@ -66,7 +66,7 @@ export class ProductService {
     },
     {
       id: 7,
-      categoryId: 1,
+      category: '',
       name: 'Deshebrada',
       description: '10 kg',
       price: 683,
@@ -75,7 +75,7 @@ export class ProductService {
     },
     {
       id: 8,
-      categoryId: 1,
+      category: '',
       name: 'Servilletas',
       description: '500 pz',
       price: 70,
@@ -106,7 +106,8 @@ export class ProductService {
     const filteredProducts = this.productsSubject.value.filter(
       (product) =>
         product.name.toLowerCase().includes(keyword.toLowerCase()) ||
-        product.description.toLowerCase().includes(keyword.toLowerCase())
+        product.description.toLowerCase().includes(keyword.toLowerCase()) ||
+        product.category.toLowerCase().includes(keyword.toLowerCase())
     );
     this.filteredProductsSubject.next(filteredProducts);
   }
@@ -142,7 +143,7 @@ export class ProductService {
 
     source$.pipe(map((data: any[]) => {
       this.productsSubject.next(data.map(product => ({...product, quantity: 0})))
-      this.filteredProductsSubject.next(data.map(product => ({...product, quantity: 0})))
+      this.filteredProductsSubject.next(this.productsSubject.value)
       console.log(data);
     })).subscribe();
   }
